@@ -96,7 +96,7 @@ def no_correlation(df) -> DataFrame:
         no_count = 0
         desc_list = row.description.split(' ')
         for word in desc_list:
-            if word.lower() in ['nie']:
+            if word.lower() == 'nie':
                 no_count += 1
         df.at[i, 'no_count'] = no_count
     return df.corr(method='pearson')
