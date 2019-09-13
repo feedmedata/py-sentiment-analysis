@@ -53,7 +53,7 @@ features of given dataset.
         python3 analyse.py -s /home/user/dataset.csv
 
    3. Other results related to the task, will be printed
-   at the terminal window. 
+   at the terminal window.
 
 ======================================================
       

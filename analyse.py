@@ -36,10 +36,10 @@ def feedback_bar(df):
     for i in range(3):
         plt.text(x=i-0.06, y=counts[i], size=10, s=counts[i])
 
-    if argv[2] == '-s':
+    if argv[1] == '-s':
         plt.savefig('feedback_bar.png')
         return True
-    elif argv[2] == '-d':
+    elif argv[1] == '-d':
         plt.show()
         return False
 
@@ -56,10 +56,10 @@ def review_histogram(df):
     plt.ylabel('Count')
     plt.xlabel('Length')
 
-    if argv[2] == '-s':
+    if argv[1] == '-s':
         plt.savefig('length_histogram.png')
         return True
-    elif argv[2] == '-d':
+    elif argv[1] == '-d':
         plt.show()
         return False
 
@@ -104,7 +104,7 @@ def no_correlation(df) -> DataFrame:
 
 if __name__ == '__main__':
     #Reading data from .csv and putting it into pandas DataFrame.
-    df = read_csv(argv[1])
+    df = read_csv(argv[2])
     #Cleaning DataFrame, dropping rows with NaN
     df = df.dropna()
 
