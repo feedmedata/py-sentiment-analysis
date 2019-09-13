@@ -5,7 +5,7 @@ from pandas.core.frame import DataFrame
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
-CSV = ''
+CSV = '/home/knot/Pobrane/polish_sentiment_dataset.csv'
 
 POSITIVE = 1.0
 NEUTRAL = 0
@@ -47,7 +47,8 @@ def feedback_bar(df):
     for i in range(3):
         plt.text(x=i-0.06, y=counts[i], size=10, s=counts[i])
 
-    #plt.savefig('feedback_bar.png')
+    plt.savefig('feedback_bar.png')
+
 
 
 #@save_or_display
@@ -81,8 +82,17 @@ def filter(df, length_gte=None, rates=None) -> DataFrame:
     return df
 
 
-def creative_function():
-    ...
+def no_correlation(df):
+    df['no_count'] = 0
+
+    for i, row in df.iterrows():
+        no_count = 0
+        desc_list = row.description.split(' ')
+        for word in desc_list:
+            if word.lower() in ['nie']:
+                no_count += 1
+        df.at[i, 'no_count'] = no_count
+    return df.corr(method='pearson')
 
 
 if __name__ == '__main__':
@@ -99,11 +109,18 @@ if __name__ == '__main__':
 
     #Task 3) Positive and negative feedback filtering
     filtered_df = filter(df, 100, [POSITIVE, NEGATIVE])
-    assert NEUTRAL not in filtered_df.rate
-    assert min(filtered_df.length) > 99
+    no_neutral = NEUTRAL not in filtered_df.rate
+    len_gte100 = min(filtered_df.length) > 99
+    assert no_neutral
+    assert len_gte100
+    print(f"3) Filtering DataFrame (length > 100 and rate in [POSITIVE, NEGATIVE]")
+    print(f"Neutral not in df.rate: {no_neutral}")
+    print(f"Minimal length of description > 99: {len_gte100}\n")
 
     #Task 4) Finding correlation between length and rate.
     corr = df.corr(method='pearson')
-    print(f"Length and rate correlation\n\n {corr}")
+    print(f"4) Length and rate correlation\n\n {corr}")
 
     #Task 5) Interesting relation between features.
+    no_corr = no_correlation(df)
+    print(f"5) Number of 'nie' word used and rate correlation\n\n {no_corr}")
