@@ -7,7 +7,7 @@
 
 ======================================================
 
-         # Ermlab Software recruitment task: 
+          Ermlab Software recruitment task: 
 
    1) Feedback visualization using chart (distinguish 
 by type: positive, neutral, negative),
@@ -33,6 +33,30 @@ features of given dataset.
 
 ======================================================
 
-          ## Usage
+          Installation and usage: 
 
+   Requirements:
+     pandas     == 0.25.1
+     matplotlib == 3.1.1
+
+
+   1. Clone repository, 
+   2. To use analyse module for sentiment dataset 
+      invoke analyse.py with two required arguments. 
+
+      python3 analyse.py [-s | -d] <dataset_path>
+        
+        -s    Saves charts to repository directory. 
+        -d    Displays charts on the fly.
+
+      Example: 
+        python3 analyse.py -s /home/user/dataset.csv
+
+   3. Other results related to the task, will be printed
+   at the terminal window. 
+
+======================================================
+      
+
+        
   
