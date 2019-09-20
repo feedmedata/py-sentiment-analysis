@@ -10,7 +10,7 @@ NEUTRAL  = 0
 NEGATIVE = -1.0
 
 
-def feedback_bar(df):
+def feedback_bar(df, arg):
     """
     Displays or saves bar chart for feedback type count.
     :param df:DataFrame
@@ -36,15 +36,15 @@ def feedback_bar(df):
     for i in range(3):
         plt.text(x=i-0.06, y=counts[i], size=10, s=counts[i])
 
-    if argv[1] == '-s':
+    if arg == '-s':
         plt.savefig('feedback_bar.png')
         return True
-    elif argv[1] == '-d':
+    elif arg == '-d':
         plt.show()
         return False
 
 
-def review_histogram(df):
+def review_histogram(df, arg):
     """
     Displays or saves histogram for description lengths.
     :param df:
@@ -56,10 +56,10 @@ def review_histogram(df):
     plt.ylabel('Count')
     plt.xlabel('Length')
 
-    if argv[1] == '-s':
+    if arg == '-s':
         plt.savefig('length_histogram.png')
         return True
-    elif argv[1] == '-d':
+    elif arg == '-d':
         plt.show()
         return False
 
@@ -110,14 +110,14 @@ if __name__ == '__main__':
 
     #Task 1) Feedback visualization
     print("1) Feedback visualization:")
-    if feedback_bar(df):
+    if feedback_bar(df, argv[1]):
         print('Feedback chart saved as feedback_bar.png')
     else:
         print('Feedback chart displayed.')
 
     #Task 2) Histogram for description lengths
     print("\n2) Length histogram")
-    if review_histogram(df):
+    if review_histogram(df, argv[1]):
         print('Length histogram saved as length_histogram.png')
     else:
         print("Histogram displayed.")
