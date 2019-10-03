@@ -10,7 +10,7 @@ NEUTRAL  = 0
 NEGATIVE = -1.0
 
 
-def feedback_bar(df, arg):
+def feedback_bar(df: DataFrame, arg: str) -> bool:
     """
     Displays or saves bar chart for feedback type count.
     :param df:DataFrame
@@ -45,7 +45,7 @@ def feedback_bar(df, arg):
         return False
 
 
-def review_histogram(df, arg):
+def review_histogram(df: DataFrame, arg: str) -> bool:
     """
     Displays or saves histogram for description lengths.
     :param df:
@@ -65,7 +65,7 @@ def review_histogram(df, arg):
         plt.show()
         return False
 
-def filter_df(df, length_gte=None, rates=None) -> DataFrame:
+def filter_df(df: DataFrame, length_gte: int = None, rates : int = None) -> DataFrame:
     """
     Returns filtered DataFrame descriptions.
     Possible filters:
@@ -84,7 +84,7 @@ def filter_df(df, length_gte=None, rates=None) -> DataFrame:
     return df
 
 
-def no_correlation(df) -> DataFrame:
+def no_correlation(df: DataFrame) -> DataFrame:
     """
     Counts 'nie' word occurrence in descriptions.
     Adds result to the no_count column and returns
