@@ -105,6 +105,9 @@ def no_correlation(df) -> DataFrame:
 
 
 if __name__ == '__main__':
+    if argv[1] not in ['-s', '-d']:
+        raise ValueError('Please, provide proper argument according to the documentation.')
+
     #Reading data from .csv and putting it into pandas DataFrame.
     df = read_csv(argv[2])
     #Cleaning DataFrame, dropping rows with NaN
