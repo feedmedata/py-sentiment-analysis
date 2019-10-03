@@ -14,6 +14,7 @@ def feedback_bar(df, arg):
     """
     Displays or saves bar chart for feedback type count.
     :param df:DataFrame
+    :arg:String - argument flag indicating chart display
     :return bool
     """
     labels = ['Positive', 'Neutral', 'Negative']
@@ -48,6 +49,7 @@ def review_histogram(df, arg):
     """
     Displays or saves histogram for description lengths.
     :param df:
+    :arg:String - argument flag indicating chart display
     :return bool
     """
     df.hist(column='length', grid=True, bins=8000, cumulative=False)
