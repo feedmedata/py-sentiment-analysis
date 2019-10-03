@@ -115,6 +115,7 @@ if __name__ == '__main__':
 
     #Task 1) Feedback visualization
     print("1) Feedback visualization:")
+
     if feedback_bar(df, argv[1]):
         print('Feedback chart saved as feedback_bar.png')
     else:
@@ -122,6 +123,7 @@ if __name__ == '__main__':
 
     #Task 2) Histogram for description lengths
     print("\n2) Length histogram")
+
     if review_histogram(df, argv[1]):
         print('Length histogram saved as length_histogram.png')
     else:
@@ -131,16 +133,20 @@ if __name__ == '__main__':
     filtered_df = filter_df(df, 100, [POSITIVE, NEGATIVE])
     no_neutral = NEUTRAL not in filtered_df.rate
     len_gte_100 = min(filtered_df.length) > 99
+
     assert no_neutral
     assert len_gte_100
+
     print(f"\n3) Filtering DataFrame (length > 100 and rate in [POSITIVE, NEGATIVE]")
     print(f"Neutral not in df.rate: {no_neutral}")
     print(f"Minimal length of description > 99: {len_gte_100}")
 
     #Task 4) Finding correlation between length and rate.
     corr = df.corr(method='pearson')
+
     print(f"\n4) Length and rate correlation\n {corr}")
 
     #Task 5) Interesting relation between features ('Nie' word usage to rate type).
     no_corr = no_correlation(df)
+
     print(f"\n5) Number of 'nie' word used and rate correlation\n {no_corr}")
