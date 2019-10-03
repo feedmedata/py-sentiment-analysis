@@ -35,11 +35,6 @@ features of given dataset.
 
           Installation and usage: 
 
-   Requirements:
-     pandas     == 0.25.1
-     matplotlib == 3.1.1
-
-
    1. Clone repository, 
    2. To use analyse module for sentiment dataset 
       invoke analyse.py with two required arguments. 
