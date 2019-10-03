@@ -1,4 +1,4 @@
-from sys import argv
+from sys import argv, exit
 
 from pandas import read_csv
 from pandas.core.frame import DataFrame
@@ -65,6 +65,7 @@ def review_histogram(df: DataFrame, arg: str) -> bool:
         plt.show()
         return False
 
+
 def filter_df(df: DataFrame, length_gte: int = None, rates : int = None) -> DataFrame:
     """
     Returns filtered DataFrame descriptions.
@@ -105,11 +106,16 @@ def no_correlation(df: DataFrame) -> DataFrame:
 
 
 if __name__ == '__main__':
+    #Reading data from .csv and putting it into pandas DataFrame.
+    try:
+        df = read_csv(argv[2])
+    except IndexError:
+        print('Please, provide all required arguments.')
+        exit(1)
+
     if argv[1] not in ['-s', '-d']:
         raise ValueError('Please, provide proper argument according to the documentation.')
 
-    #Reading data from .csv and putting it into pandas DataFrame.
-    df = read_csv(argv[2])
     #Cleaning DataFrame, dropping rows with NaN
     df = df.dropna()
 
