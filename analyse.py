@@ -65,7 +65,7 @@ def review_histogram(df, arg):
         plt.show()
         return False
 
-def filter(df, length_gte=None, rates=None) -> DataFrame:
+def filter_df(df, length_gte=None, rates=None) -> DataFrame:
     """
     Returns filtered DataFrame descriptions.
     Possible filters:
@@ -125,7 +125,7 @@ if __name__ == '__main__':
         print("Histogram displayed.")
 
     #Task 3) Positive and negative feedback filtering
-    filtered_df = filter(df, 100, [POSITIVE, NEGATIVE])
+    filtered_df = filter_df(df, 100, [POSITIVE, NEGATIVE])
     no_neutral = NEUTRAL not in filtered_df.rate
     len_gte_100 = min(filtered_df.length) > 99
     assert no_neutral
