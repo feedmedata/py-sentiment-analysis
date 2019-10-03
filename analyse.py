@@ -1,4 +1,4 @@
-from sys import argv, exit
+from sys import argv
 
 from pandas import read_csv
 from pandas.core.frame import DataFrame
@@ -66,7 +66,7 @@ def review_histogram(df: DataFrame, arg: str) -> bool:
         return False
 
 
-def filter_df(df: DataFrame, length_gte: int = None, rates : int = None) -> DataFrame:
+def filter_df(df: DataFrame, length_gte: int = None, rates: int = None) -> DataFrame:
     """
     Returns filtered DataFrame descriptions.
     Possible filters:
